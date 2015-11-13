@@ -75,6 +75,7 @@ class Outline extends View {
 	    .on('keydown', '.pxo-outline-title-entry', (e) => this.handleKeyDown(e))
 	    .on('click', '.pxo-tgr-kb', (e)=> this.showKeyBindings(e))
 	    .on('click', '.pxo-tgr-save', (e)=> this.save(e))
+	    .on('click', '.pxo-node-collapser', (e) => this.toggleCollapsed(e))
 	this.makeSortable()
     }
 
@@ -84,6 +85,11 @@ class Outline extends View {
 	    placeholderClass: 'pxo-outline-placeholder',
 	    placeholder: '<li class="pxo-outline-placeholder placeholder"></li>'
 	})
+    }
+
+    toggleCollapsed(e) {
+	debugger
+	this.nodeContaining(e.target).toggleClass('pxo-state-collapsed')
     }
 
     showKeyBindings(e) {
@@ -155,7 +161,7 @@ class Outline extends View {
 
 
     nodeContaining(el) {
-	return $(el).parent('.pxo-outline-node')
+	return $(el).parents('.pxo-outline-node').first()
     }
 
     handleEnter(e) {

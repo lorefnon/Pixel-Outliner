@@ -93,11 +93,18 @@
     overflow: hidden;
 }
 
-
 .pxo-outline-tree {
     list-style-type: circle;
-    margin: 0 0 0 20px;
+    margin: 0 0 0 40px;
 }
+
+.pxo-state-collapsed .pxo-outline-tree {
+    display: none;
+}
+
+/* .pxo-outline-tree-container > .pxo-outline-tree { */
+/*     margin: 0 0 0 20px; */
+/* } */
 
 .pxo-outline-title-entry {
     display: inline-block;
@@ -123,8 +130,8 @@
     height: 20px;
     width: 20px;
     top: 0;
-    left: -20px;
-    cursor: pointer;
+    right: 0px;
+    cursor: move;
     z-index: 99;
 }
 
@@ -178,3 +185,42 @@
 .pxo-outline-placeholder {
     border: 2px dotted #00AFF0;
 }
+
+.pxo-node-spine {
+  border: 1px solid #ddd;
+  position: absolute;
+  top: 15px;
+  bottom: 0;
+  right: 13px;
+}
+
+.pxo-node-collapser {
+  position: absolute;
+  top: 1px;
+  right: 24px;
+  font-size: 0.8rem;
+  color: #ddd;
+  display: none;
+  cursor: pointer;  
+}
+
+.pxo-state-collapsed .pxo-node-collapse-icon {
+    display: none;
+}
+
+.pxo-state-collapsed .pxo-node-expand-icon {
+    display: block !important;
+}
+
+.pxo-node-left-extension {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40px;
+  width: 40px;
+}
+
+.pxo-node-left-extension:hover .pxo-node-collapser {
+    display: block;
+}
+
