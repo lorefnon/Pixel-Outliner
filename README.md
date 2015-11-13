@@ -9,7 +9,7 @@
   </tr>
   <tr>
     <td>
-      Lightweight cross-platform minimal outliner for everyday note-taking, brainstorming and ideation.
+      Lightweight and minimal cross-platform outliner for everyday note-taking, brainstorming and ideation.
     </td>  
   </tr>
   <tr>
