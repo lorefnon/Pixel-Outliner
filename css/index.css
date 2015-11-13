@@ -97,6 +97,7 @@
 .pxo-outline-tree {
     list-style-type: circle;
     margin: 0 0 0 20px;
+    margin: 20px;
 }
 
 .pxo-outline-title-entry {
@@ -171,3 +172,10 @@
     height: 20px;
 }
 
+.mjs-nestedSortable-hovering {
+    background: lemonchiffon;
+}
+
+.pxo-outline-placeholder {
+    border: 2px dotted #00AFF0;
+}

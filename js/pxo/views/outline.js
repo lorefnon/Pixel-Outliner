@@ -5,6 +5,9 @@ import { map, isEmpty, isArray, each, extend } from 'lodash'
 import fdialogs from 'node-webkit-fdialogs'
 import PersistenceMediator from '../persistence_mediator'
 
+import 'jquery-ui/sortable'
+import '../../../../vendor/nested_sortable/nested_sortable'
+
 import kbTmpl from '../../../templates/key_bindings'
 import nodeTmpl from '../../../templates/_node'
 
@@ -71,6 +74,23 @@ class Outline extends View {
 	    .on('keydown', '.pxo-outline-title-entry', (e) => this.handleKeyDown(e))
 	    .on('click', '.pxo-tgr-kb', (e)=> this.showKeyBindings(e))
 	    .on('click', '.pxo-tgr-save', (e)=> this.save(e))
+	this.makeSortable()
+    }
+
+    makeSortable() {
+	this.el.find('.pxo-outline-tree-top').nestedSortable({
+	    items: ['.pxo-outline-node'],
+	    handle: '.pxo-node-zoom-thumb',
+	    expandOnHover: 700,
+	    startCollapsed: false,
+	    placeholder: 'pxo-outline-placeholder',
+	    forcePlaceholderSize: true,
+	    // tolerance: 'pointer',
+	    // toleranceElement: '> div',
+	    isTree: true,
+	    listType: 'ul',
+	    helper: 'clone'
+	})
     }
 
     showKeyBindings(e) {
@@ -224,6 +244,7 @@ class Outline extends View {
 	const parent = el.parent()
 	const newNode = $(nodeTmpl(this.emptyNode()))
 	newNode.insertAfter(parent)
+	//this.makeSortable()
 	this.focusOn(newNode)
     }
 

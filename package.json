@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "aviator": "^0.5.0",
+    "html5sortable": "^0.3.0",
     "jquery": "^2.1.4",
+    "jquery-ui": "^1.10.5",
     "js-yaml": "^3.4.3",
     "lodash": "^3.10.1",
     "node-webkit-fdialogs": "^0.2.7",

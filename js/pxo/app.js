@@ -2,6 +2,9 @@ import { find, include } from 'lodash'
 import Router from './router'
 import Aviator from 'aviator'
 import UIMediator from './ui_mediator'
+import jQuery from 'jQuery'
+
+global.$ = global.jQuery = window.$ = window.jQuery = jQuery
 
 export default class App {
 
@@ -12,8 +15,6 @@ export default class App {
     }
 
     setupEnv() {
-	global.document = window.document
-	global.location = window.location
     }
 
     setupNativeMenu(gui) {
