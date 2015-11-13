@@ -21,7 +21,7 @@
 
 ## Current Status:
 
-:bangbang: Beta. Basic features are functional, though the user interface needs polishing. File format may undergo backward incompatible changes
+:bangbang: [Beta](https://github.com/lorefnon/Pixel-Outliner/releases/tag/v1.0.0-beta) :bangbang: Basic features are functional, though the user interface needs polishing. File format may undergo backward incompatible changes
 before we reach 1.0. Not recommended for serious use yet.
 
 ## Screenshot:
