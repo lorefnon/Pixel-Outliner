@@ -32,6 +32,7 @@ export default class UIMediator {
     }
 
     openOutline(params) {
+	console.log('=> Open outline')
 	const filename = params.queryParams.filename
 	this.teardownAll()
 	let data

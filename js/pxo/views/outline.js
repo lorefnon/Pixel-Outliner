@@ -5,8 +5,9 @@ import { map, isEmpty, isArray, each, extend } from 'lodash'
 import fdialogs from 'node-webkit-fdialogs'
 import PersistenceMediator from '../persistence_mediator'
 
-import 'jquery-ui/sortable'
-import '../../../../vendor/nested_sortable/nested_sortable'
+// import 'jquery-ui/sortable'
+//import '../../../../vendor/nested_sortable/nested_sortable'
+import '../../../../vendor/jquery_sortable/jquery_sortable'
 
 import kbTmpl from '../../../templates/key_bindings'
 import nodeTmpl from '../../../templates/_node'
@@ -78,18 +79,10 @@ class Outline extends View {
     }
 
     makeSortable() {
-	this.el.find('.pxo-outline-tree-top').nestedSortable({
-	    items: ['.pxo-outline-node'],
+	this.el.find('.pxo-outline-tree-top').sortable({
 	    handle: '.pxo-node-zoom-thumb',
-	    expandOnHover: 700,
-	    startCollapsed: false,
-	    placeholder: 'pxo-outline-placeholder',
-	    forcePlaceholderSize: true,
-	    // tolerance: 'pointer',
-	    // toleranceElement: '> div',
-	    isTree: true,
-	    listType: 'ul',
-	    helper: 'clone'
+	    placeholderClass: 'pxo-outline-placeholder',
+	    placeholder: '<li class="pxo-outline-placeholder placeholder"></li>'
 	})
     }
 
