@@ -5,7 +5,7 @@
     </td>
     <td>
       <strong> Pixel Outliner </strong>
-      [![Join the chat at https://gitter.im/lorefnon/pixel-outliner](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/lorefnon/pixel-outliner?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+      <a href="https://gitter.im/lorefnon/pixel-outliner?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img class="share-view__badge" src="https://badges.gitter.im/Join%20Chat.svg"></a>
     </td>
   </tr>
   <tr>
@@ -41,8 +41,8 @@ before we reach 1.0. Not recommended for serious use yet.
 
 ### Pre-packaged apps:
 
-:package: Pre-packaged app for OS X (64 bit) is available [here]().
-:soon: Installers will be available for other major platforms soon.
+- :package: Pre-packaged app for OS X (64 bit) is available [here]().
+- :soon: Installers will be available for other major platforms soon.
 
 ### Installation from source:
 
