@@ -4,7 +4,7 @@
       <img src="https://raw.githubusercontent.com/lorefnon/pixel-outliner/master/assets/icons/pxo_app_icon.png">
     </td>
     <td>
-      <h1> Pixel Outliner </h1>
+      <strong> Pixel Outliner </strong>
     </td>
   </tr>
   <tr>
@@ -37,19 +37,20 @@ Installers will be available for other major platforms soon.
 
 ### Installation from source:
 
-- cd <project-directory>
-- npm install -g gulp
-- npm install
-- gulp
-- nwjs .
+- Install nwjs (previously node-webkit): This provides the foundational framework for building desktop applications in javascript
+- Install node.js (nvm is recommended approach, although official installers should work fine as well): This is required for our javascript based toolchain
+- `cd pixel-outliner`
+- Install gulp - our build tool: `npm install -g gulp`
+- Install project dependencies: `npm install`
+- Build the source: `gulp`
+- Run the app: `nwjs .`
 
 ### Building the Mac App:
 
-- gulp bundle
+- `gulp bundle`
 
 ## License:
 
 [![GPL V3.0](http://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl-3.0.en.html)
 
-Dexterous is built upon open source technologies, and is available under [GPL v3.0 license](https://www.gnu.org/copyleft/gpl.html). Community contributions are more than welcome.
-
+Pixel Outliner is built upon open source technologies, and is available under [GPL v3.0 license](https://www.gnu.org/copyleft/gpl.html). Community contributions are more than welcome, as long as they are aligned with the project goals.
