@@ -1,17 +1,21 @@
 <table>
   <tr>
-    <td rowspan='2'>
+    <td rowspan='3'>
       <img src="https://raw.githubusercontent.com/lorefnon/pixel-outliner/master/assets/icons/pxo_app_icon.png">
     </td>
     <td>
       <strong> Pixel Outliner </strong>
-      <a href="https://gitter.im/lorefnon/pixel-outliner?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img class="share-view__badge" src="https://badges.gitter.im/Join%20Chat.svg"></a>
     </td>
   </tr>
   <tr>
     <td>
       Lightweight cross-platform minimal outliner for everyday note-taking, brainstorming and ideation.
     </td>  
+  </tr>
+  <tr>
+    <td>
+      <a href="https://groups.google.com/forum/#!forum/pixel-outliner"> Mailing List </a> | <a href="https://github.com/lorefnon/Pixel-Outliner/issues"> Issues </a>
+    </td>
   </tr>
 </table>
 
@@ -41,7 +45,7 @@ before we reach 1.0. Not recommended for serious use yet.
 
 ### Pre-packaged apps:
 
-- :package: Pre-packaged app for OS X (64 bit) is available [here]().
+- :package: Pre-packaged app for OS X (64 bit) is available [here](https://drive.google.com/file/d/0B3dK9xtlYmhwdkV2cVlRakNKV2s/view?usp=sharing).
 - :soon: Installers will be available for other major platforms soon.
 
 ### Installation from source:
