@@ -1,17 +1,23 @@
 <table>
   <tr>
-    <td>
+    <td rowspan='2'>
       <img src="https://raw.githubusercontent.com/lorefnon/pixel-outliner/master/assets/icons/pxo_app_icon.png">
     </td>
     <td>
       <h1> Pixel Outliner </h1>
     </td>
   </tr>
+  <tr>
+    <td>
+      Lightweight cross-platform minimal outliner for everyday note-taking, brainstorming and ideation.
+    </td>  
+  </tr>
 </table>
 
-<hr/>
+## Current Status:
 
-Lightweight cross-platform minimal outliner for everyday note-taking, brainstorming and ideation.
+Beta. Most features are functional, though the user interface needs polishing. File format may undergo backward incompatible changes
+before we reach 1.0. Not recommended for serious use.
 
 ## Screenshots:
 
@@ -19,9 +25,17 @@ Lightweight cross-platform minimal outliner for everyday note-taking, brainstorm
 
 ## Goals
 
-- To provide a cross-platform minimal bloat-free interface for outling and note-taking.
+- To provide a cross-platform & intuitive bloat-free interface for outling and note-taking.
+- To provide a vendor neutral solution that does not lock the user in any proprietary service.
 
 ## Running the app:
+
+### Pre-packaged apps:
+
+Pre-packaged app for OS X (64 bit) is available [here]().
+Installers will be available for other major platforms soon.
+
+### Installation from source:
 
 - cd <project-directory>
 - npm install -g gulp
@@ -29,11 +43,9 @@ Lightweight cross-platform minimal outliner for everyday note-taking, brainstorm
 - gulp
 - nwjs .
 
-## Creating Mac App:
+### Building the Mac App:
 
 - gulp bundle
-
-Installers will be available for major platforms soon.
 
 ## License:
 
