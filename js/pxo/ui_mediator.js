@@ -1,7 +1,9 @@
 import Splash from './views/splash'
 import Outline from './views/outline'
+import PersistenceMediator from './persistence_mediator'
 import { each, isArray } from 'lodash'
 import $ from 'jquery'
+import Aviator from 'aviator'
 
 export default class UIMediator {
 
@@ -13,7 +15,9 @@ export default class UIMediator {
     }
 
     splash() {
-	this.templates.primary = (new Splash()).renderTo('.pxo-app').setup()
+	this.templates.primary = (new Splash())
+	    .renderTo('.pxo-app')
+	    .setup()
     }
 
     notFound() {
@@ -22,7 +26,34 @@ export default class UIMediator {
 
     newOutline() {
 	this.teardownAll()
-	this.template = (new Outline()).renderTo('.pxo-app').setup();
+	this.template = (new Outline())
+	    .renderTo('.pxo-app')
+	    .setup()
+    }
+
+    openOutline(params) {
+	const filename = params.queryParams.filename
+	this.teardownAll()
+	let data
+	try {
+	    data = this
+		.persistenceMediator()
+		.fetch(filename)
+
+	    this.template = (new Outline({
+		filename, data
+	    })).renderTo('.pxo-app').setup()
+
+	} catch (e) {
+	    // window.alert(`Invalid or corrupted file : ${filename}`)
+	    console.error(e)
+	    Aviator.navigate('/')
+	}
+    }
+
+    persistenceMediator() {
+	return this._persistenceMediator = this._persistenceMediator ||
+	    new PersistenceMediator()
     }
 
     teardownAll() {

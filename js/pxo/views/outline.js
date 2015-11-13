@@ -1,5 +1,9 @@
 import View from './view'
 import $ from 'jquery'
+import uuid from 'node-uuid'
+import { map, isEmpty, isArray, each, extend } from 'lodash'
+import fdialogs from 'node-webkit-fdialogs'
+import PersistenceMediator from '../persistence_mediator'
 
 import kbTmpl from '../../../templates/key_bindings'
 import nodeTmpl from '../../../templates/_node'
@@ -13,18 +17,45 @@ const KEY_CODES = {
 
 class Outline extends View {
 
+    constructor(options) {
+	super()
+	if (options) {
+	    this.filename = options.filename
+	    this.data = options.data
+	}
+	console.log('data =>', this.data)
+	console.log('filename => ', this.filename)
+    }
+
     template() {
 	return require('../../../templates/outline')
     }
 
     templateParams() {
-	return {
-	    tree: this.emptyTree()
+	if (this.data) {
+	    return {
+		tree: {
+		    roots: this.buildHierarchy()
+		}
+	    }
+	} else {
+	    return { tree: this.emptyTree() }
 	}
+    }
+
+    buildHierarchy(ids) {
+	if (! isArray(ids)) ids = this.data.rootIds
+	return map(ids, (id) => {
+	    return extend({}, {
+		title: this.data.nodes[id].title,
+		children: this.buildHierarchy(this.data.nodes[id].childIds)
+	    })
+	})
     }
 
     emptyNode() {
 	return {
+	    id: uuid.v4(),
 	    title: null,
 	    children: []
 	}
@@ -32,7 +63,7 @@ class Outline extends View {
 
     emptyTree() {
 	return {
-	    root: this.emptyNode()
+	    roots: [this.emptyNode()]
 	}
     }
 
@@ -40,6 +71,7 @@ class Outline extends View {
 	this.el
 	    .on('keydown', '.pxo-outline-title-entry', (e) => this.handleKeyDown(e))
 	    .on('click', '.pxo-tgr-kb', (e)=> this.showKeyBindings(e))
+	    .on('click', '.pxo-tgr-save', (e)=> this.save(e))
     }
 
     showKeyBindings(e) {
@@ -51,6 +83,27 @@ class Outline extends View {
 	$('body')
 	    .append(kbView)
 	    .one('click', ()=> kbView.remove())
+    }
+
+    save(e) {
+	const data = JSON.stringify(this.extractDataFromDom())
+	if (this.filename) {
+	    this.persistenceMediator().save(this.filename, data)
+	} else {
+	    var dialog = new fdialogs.FDialog({
+		type: 'save',
+		defaultSavePath: '~/Documents/Untitled.pxo'
+	    })
+	    const content = new Buffer(data, 'utf-8')
+	    dialog.saveFile(content, (err, path) => {
+		this.filename = path
+	    })
+	}
+    }
+
+    persistenceMediator() {
+	return this._persistenceMediator = this._persistenceMediator ||
+	    new PersistenceMediator()
     }
 
     handleKeyDown(e) {
@@ -159,18 +212,50 @@ class Outline extends View {
     }
 
     pushNodeBack(node) {
-	node.insertAfter(node.parents('.pxo-outline-tree-inner').first().parent('.pxo-outline-node'))
+	node.insertAfter(
+	    node
+		.parents('.pxo-outline-tree-inner')
+		.first()
+		.parent('.pxo-outline-node')
+	)
 	this.focusOn(node)
     }
 
     injectNewNode(el) {
 	const parent = el.parent()
-	const newNode = $(nodeTmpl({
-	    title: null,
-	    children: []
-	}))
+	const newNode = $(nodeTmpl(this.emptyNode()))
 	newNode.insertAfter(parent)
 	this.focusOn(newNode)
+    }
+
+    extractDataFromDom() {
+	let data = { nodes: {} }
+
+	data.rootIds = this.el
+	    .find('.pxo-outline-tree-top')
+	    .children()
+	    .map(function() {
+		return $(this).data('id')
+	    })
+	    .toArray()
+
+	this.el.find('.pxo-outline-node').map(function() {
+	    const el = $(this)
+	    const id = el.data('id')
+	    if (isEmpty(id)) return
+	    data.nodes[id] = {
+		title: el.children('.pxo-outline-title-entry').html(),
+		childIds: el
+		    .children('.pxo-outline-tree')
+		    .children('.pxo-outline-node')
+		    .map(function() {
+			return $(this).data('id')
+		    })
+		    .toArray()
+	    }
+	})
+
+	return data;
     }
 
 }

@@ -60,15 +60,16 @@ gulp.task('bundle', () => {
 	files: ['./vendor/**/**', './node_modules/**/**', './dist/**/**', './css/**/**','./assets/**/**', './index.html', './package.json'],
 	platforms: ['osx64'],
 	version: '0.12.3',
-	macIcns: './assets/icons/pxo_app_icon.icns'
+	macIcns: './assets/icons/pxo_app_icon.icns',
+	macPlist: {
+	    CFBundleDocumentTypes: [{
+		CFBundleTypeName: 'Pixel Outliner Outline File',
+		CFBundleTypeExtensions: ['pxo'],
+		CFBundleTypeIconFile: 'pxo_file_icon_64'
+	    }]
+	}
     })
-    return nw
-	.build()    
-	.then(function () {
-	    console.log('all done!');
-	}).catch(function (error) {
-	    console.error(error);
-	})
+    return nw.build()
 })
 
 

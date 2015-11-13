@@ -16,6 +16,7 @@ export default class Router {
 	    target: this.uiMediator,
 	    '/': 'splash',
 	    '/outlines/new': 'newOutline',
+	    '/outlines/file': 'openOutline',
 	    notFound: 'notFound'
 	})
 	return this

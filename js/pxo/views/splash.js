@@ -11,6 +11,7 @@ export default class Splash extends View {
     setupEvents() {
 	$('.pxo-tgr-open-outline').on('click', () => this.triggerFileSelection())
 	$('.pxo-tgr-new-outline').on('click', () => this.triggerOutlineCreation())
+	$('.pxo-file-selection-input').on('change', () => this.triggerOutlineOpen())
     }
 
     teardownEvents() {
@@ -24,6 +25,14 @@ export default class Splash extends View {
 
     triggerOutlineCreation() {
 	Aviator.navigate('/outlines/new')
+    }
+
+    triggerOutlineOpen() {
+	Aviator.navigate('/outlines/file', {
+	    queryParams: {
+		filename: $('.pxo-file-selection-input').val()
+	    }
+	})
     }
 
 }

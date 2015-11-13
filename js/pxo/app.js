@@ -1,4 +1,6 @@
+import { find, include } from 'lodash'
 import Router from './router'
+import Aviator from 'aviator'
 import UIMediator from './ui_mediator'
 
 export default class App {
@@ -25,15 +27,36 @@ export default class App {
 	win.menu = nativeMenuBar
     }
 
+    showDevTools(gui) {
+	gui
+	    .Window
+	    .get()
+	    .showDevTools()
+    }
+
     setupNativeUI() {
 	const gui = global.window.nwDispatcher.requireNwGui()
+	this.gui = gui
 	this.setupNativeMenu(gui)
+	if (include(gui.App.argv, '--dev')) {
+	    this.showDevTools(gui)
+	}
+	this.openPassedFile(gui)
+    }
+
+    openPassedFile() {
+	const filename = find(this.gui.App.argv, (i)=> i.match(/.pxo$/))
+	if (! filename) return
+	Aviator.navigate('/outlines/file', {
+	    queryParams: { filename }
+	})
     }
 
     init() {
 	this.setupEnv()
 	this.setupNativeUI()
 	this.router.init()
+	this.openPassedFile()
     }
 
 }
