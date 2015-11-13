@@ -57,6 +57,7 @@
 
 .pxo-r-tool-box {
     position: absolute; top: 0; right: 10px; bottom: 0; width: 40px;
+    margin: 0;
 }
 
 .pxo-r-tool-box li {
@@ -96,6 +97,7 @@
 .pxo-outline-tree {
     list-style-type: circle;
     margin: 0 0 0 40px;
+    padding: 0;
 }
 
 .pxo-state-collapsed .pxo-outline-tree {
@@ -220,3 +222,11 @@
     display: block;
 }
 
+.pxo-outline-node p {
+  display: block;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  margin: 0;
+}

@@ -4,6 +4,7 @@ import uuid from 'node-uuid'
 import { map, isEmpty, isArray, each, extend } from 'lodash'
 import fdialogs from 'node-webkit-fdialogs'
 import PersistenceMediator from '../persistence_mediator'
+import MediumEditor from 'medium-editor'
 
 // import 'jquery-ui/sortable'
 //import '../../../../vendor/nested_sortable/nested_sortable'
@@ -77,6 +78,11 @@ class Outline extends View {
 	    .on('click', '.pxo-tgr-save', (e)=> this.save(e))
 	    .on('click', '.pxo-node-collapser', (e) => this.toggleCollapsed(e))
 	this.makeSortable()
+
+	let self = this
+	this.el
+	    .find('.pxo-outline-node')
+	    .each(function() { self.injectEditorControls(this) })
     }
 
     makeSortable() {
@@ -88,7 +94,6 @@ class Outline extends View {
     }
 
     toggleCollapsed(e) {
-	debugger
 	this.nodeContaining(e.target).toggleClass('pxo-state-collapsed')
     }
 
@@ -243,8 +248,12 @@ class Outline extends View {
 	const parent = el.parent()
 	const newNode = $(nodeTmpl(this.emptyNode()))
 	newNode.insertAfter(parent)
-	//this.makeSortable()
+	this.injectEditorControls(el)
 	this.focusOn(newNode)
+    }
+
+    injectEditorControls(el) {
+	new MediumEditor($(el).find('.pxo-outline-title-entry')[0], {})
     }
 
     extractDataFromDom() {
