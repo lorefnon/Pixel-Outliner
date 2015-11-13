@@ -1,0 +1,9 @@
+<li class="pxo-outline-node">
+  <a class="pxo-node-zoom-thumb"/>
+  <div class="pxo-outline-title-entry" contenteditable>{{title}}</div>
+  <ul class="pxo-outline-tree pxo-outline-tree-inner">
+    {{#each children }}
+      {{> node .}}
+    {{/each}}
+  </ul>
+</li>

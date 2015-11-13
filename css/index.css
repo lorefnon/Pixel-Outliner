@@ -1,0 +1,173 @@
+.pxo-app {
+    background: #00AFF0;
+    position: absolute; left: 0; right: 0; bottom: 0; top: 0;
+    font-family: 'Raleway', sans-serif;    
+    font-size: 16px;
+}
+
+.pxo-app-header {
+    text-align: center;
+    font-weight: 900;
+    font-size: 2rem;
+    margin: 20px 0 100px 0;
+    text-shadow: 2px 2px 7px rgba(0,0,0,0.6);
+    color: white;
+    user-select: none;
+}
+
+.pxo-btn-primary {
+    color: #00AFF0;
+    background: white;
+    padding: 5px 2rem;
+    font-size: 1rem;
+    border-radius: 20px;
+}
+
+.pxo-btn-hollow {
+    color: white;
+    border: 1px solid white;
+    background: transparent;
+    padding: 5px 2rem;
+    font-size: 1rem;
+    border-radius: 20px;
+}
+
+.pxo-item-line {
+    min-height: 40px;
+    text-align: center;
+}
+
+.pxo-top-nav {
+    position: absolute; top: 0; left: 0; right: 0; height: 39px;
+    border-bottom: 1px solid #ddd;
+    line-height: 40px;
+}
+
+.pxo-logo-container {
+    position: absolute; top: 0; left: 0; bottom: 0; width: 40px;
+    color: #0080FF;
+    margin-left: 10px;
+    font-weight: 900;
+}
+
+.pxo-logo-container img {
+  height: 40px;
+  width: 40px;
+}
+
+.pxo-r-tool-box {
+    position: absolute; top: 0; right: 10px; bottom: 0; width: 40px;
+}
+
+.pxo-r-tool-box li {
+    display: block;
+    float: left;
+}
+
+.pxo-r-tool-box a {
+    display: block;
+    height: 40px;
+    width: 20px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.pxo-outline-breadcrumbs {
+    position: absolute; top: 0; bottom: 0; left: 40px; right: 50px;
+}
+
+.pxo-r-tool-box i {
+    color: #0080FF;
+    line-height: 40px;
+}
+
+.pxo-outline-tree-container {
+    background: white;
+    overflow: auto;
+    position: absolute; bottom: 0; left: 0; right: 0; top: 40px;
+}
+
+.pxo-outline-container {
+    background: white;
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    overflow: hidden;
+}
+
+
+.pxo-outline-tree {
+    list-style-type: circle;
+    margin: 0 0 0 20px;
+}
+
+.pxo-outline-title-entry {
+    display: inline-block;
+    width: 100%;
+    outline: 0;
+}
+
+.pxo-outline-title-entry:focus {
+    border-bottom: 1px dotted silver;
+}
+
+.pxo-outline-title-entry:focus {
+    background: lemonchiffon;
+}
+
+.pxo-outline-node {
+    margin: 5px 0;
+    position: relative;
+}
+
+.pxo-node-zoom-thumb {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: 0;
+    left: -20px;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.pxo-key-binding-container {
+  z-index: 999;
+  background: rgba(0,0,0,0.6);
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  right: 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+
+.pxo-key-binding-container * {
+  color: white;
+}
+
+.pxo-key-binding-container table, th, td {
+    border-collapse: collapse;
+    border: 1px solid white;
+}
+
+.pxo-key-binding-container td {
+    padding: 10px;
+}
+
+.pxo-key-binding-container table {
+    width: 100%;
+}
+
+.pxo-key-modifier {
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 2px 10px;
+}
+
+.pxo-pict-key-cell {
+    text-align: center;
+}
+
+.pxo-pict-key-row {
+    height: 20px;
+}
+
