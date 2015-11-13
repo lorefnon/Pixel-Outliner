@@ -23,8 +23,6 @@ class Outline extends View {
 	    this.filename = options.filename
 	    this.data = options.data
 	}
-	console.log('data =>', this.data)
-	console.log('filename => ', this.filename)
     }
 
     template() {
@@ -47,6 +45,7 @@ class Outline extends View {
 	if (! isArray(ids)) ids = this.data.rootIds
 	return map(ids, (id) => {
 	    return extend({}, {
+		id: id,
 		title: this.data.nodes[id].title,
 		children: this.buildHierarchy(this.data.nodes[id].childIds)
 	    })

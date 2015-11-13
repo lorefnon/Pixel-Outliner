@@ -10,6 +10,8 @@ const all = require('gulp-all')
 const path = require('path')
 const NwBuilder = require('nw-builder')
 
+require('shelljs/global')
+
 gulp.task('babel', () => {
     return gulp
 	.src('js/**/*.js')
@@ -39,11 +41,8 @@ gulp.task('hbs_partials', () => {
 	    handlebars: require('handlebars')
 	}))
 	.pipe(wrap(
-	    `
-	    var Handlebars = require('handlebars')
-	    debugger
-	    Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>))
-	    `, 
+	    `var Handlebars = require('handlebars')
+	    Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>))`,
 	    {}, {
 		imports: {
 		    processPartialName: function(fileName) {
@@ -69,7 +68,9 @@ gulp.task('bundle', () => {
 	    }]
 	}
     })
-    return nw.build()
+    return nw.build().then(()=> {
+	cp('./assets/icons/pxo_file_icon*.icns', './build/PixelOutliner/osx64/PixelOutliner.app/Contents/Resources')
+    })
 })
 
 

@@ -19,7 +19,8 @@
     "jquery": "^2.1.4",
     "js-yaml": "^3.4.3",
     "lodash": "^3.10.1",
-    "node-webkit-fdialogs": "^0.2.7"
+    "node-webkit-fdialogs": "^0.2.7",
+    "shelljs": "^0.5.3"
   },
   "devDependencies": {
     "babel-core": "^6.1.4",
